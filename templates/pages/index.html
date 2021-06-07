@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load humanize %}
 
+{% block title %} | Welcome {% endblock %}
+
 {% block content %}
 
 <!-- Showcase -->
@@ -86,8 +88,7 @@
                                 <div class="listing-heading text-center">
                                     <h4 class="text-primary">{{ listing.title }}</h4>
                                     <p>
-                                        <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state }}, {{
-                                        listing.zipcode }}
+                                        <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}
                                     </p>
                                 </div>
                                 <hr>
@@ -114,7 +115,7 @@
                                     </div>
                                 </div>
                                 <div class="row text-secondary pb-2">
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <i class="fas fa-clock"></i> {{ listing.list_date | timesince }}
                                     </div>
                                 </div>

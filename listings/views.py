@@ -1,7 +1,8 @@
 import logging
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from listings.choices import getAvailableStates, getMaxPrice, getMaxBedroom
+from django.db.models import Q
+from .choices import getAvailableStates, getMaxPrice, getMaxBedroom
 from .models import Listing
 
 logger = logging.getLogger('django')
@@ -47,7 +48,7 @@ def search(request):
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
         if keywords:
-            listings = listings.filter(description__icontains=keywords)
+            listings = listings.filter(Q(Q(description__icontains=keywords) | Q(title__icontains=keywords)))
 
     if 'city' in request.GET:
         city = request.GET['city']

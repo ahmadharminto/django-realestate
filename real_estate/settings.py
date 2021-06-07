@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'listings.apps.ListingsConfig',
     'agents.apps.AgentsConfig',
+    'accounts.apps.AccountsConfig',
+    'contacts.apps.ContactsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -193,3 +195,17 @@ LOGGING = {
         },
     }
 }
+
+# Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}
+
+# Mails SMTP
+DEFAULT_FROM_EMAIL = get_secret('MAIL_USERNAME')
+EMAIL_HOST = get_secret('MAIL_HOST')
+EMAIL_PORT = get_secret('MAIL_PORT')
+EMAIL_HOST_USER = get_secret('MAIL_USERNAME')
+EMAIL_HOST_PASSWORD = get_secret('MAIL_PASSWORD')
+EMAIL_USE_SSL = True

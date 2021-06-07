@@ -1,5 +1,5 @@
 from django.db.models import Avg, Max, Min, Sum
-from .models import Listing
+import listings.models as Models
 
 def getAvailableStates(as_list_of_tuple=False):
     state_list = {
@@ -61,14 +61,14 @@ def getAvailableStates(as_list_of_tuple=False):
     return state_list
 
 def getMaxPrice():
-    value = Listing \
+    value = Models.Listing \
         .objects \
         .all() \
         .aggregate(Max('price'))
     return value.get('price__max')
 
 def getMaxBedroom():
-    value = Listing \
+    value = Models.Listing \
         .objects \
         .all() \
         .aggregate(Max('bedrooms'))
